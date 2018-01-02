@@ -67,7 +67,7 @@ extension AuthViewController {
     
     @objc fileprivate func fillItemClick() {
         // 1.书写js代码 : javascript / java --> 雷锋和雷峰塔
-        let jsCode = "document.getElementById('userId').value='512636031@qq.com';document.getElementById('passwd').value='ws025770200';"
+        let jsCode = "document.getElementById('userId').value='xxx@qq.com';document.getElementById('passwd').value='xxx';"
         
         // 2.执行js代码
         webView.stringByEvaluatingJavaScript(from: jsCode)
