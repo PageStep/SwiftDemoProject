@@ -58,7 +58,7 @@ extension ComposeViewController {
     fileprivate func setupNavigationBar() {
         // 1.设置左右的item
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .plain, target: self, action: #selector(closeItemClick))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发送", style: .plain, target: self, action: #selector(sendItemClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .plain, target: self, action: #selector(sendItemClick))
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         // 2.设置标题
@@ -84,8 +84,10 @@ extension ComposeViewController {
 extension ComposeViewController {
     
     @objc fileprivate func closeItemClick() {
-        // 0.键盘退出
+        // 键盘退出
         textView.resignFirstResponder()
+        
+        SVProgressHUD.dismiss()
         
         dismiss(animated: true, completion: nil)
     }

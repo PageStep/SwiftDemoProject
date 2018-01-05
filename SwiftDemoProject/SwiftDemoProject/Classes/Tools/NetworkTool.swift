@@ -7,6 +7,7 @@
 //
 
 import AFNetworking
+import SVProgressHUD
 
 // 定义枚举类型
 enum RequestType : String {
@@ -112,14 +113,19 @@ extension NetworkTool {
     }
 }
 
+// 注意: 新浪开放平台已经把关于发布的接口, 升级切换为新的分享接口: statuses/share (第三方分享链接到微博)
 // MARK:- 发送微博
 extension NetworkTool {
     func sendStatus(statusText : String, isSuccess : @escaping (Bool) -> ()) {
         // 1.获取请求的URLString
-        let urlString = "https://api.weibo.com/2/statuses/update.json"
+        let urlString = "https://api.weibo.com/2/statuses/share.json"
         
         // 2.获取请求的参数
-        let parameters = ["access_token" : (UserAccountViewModel.shareIntance.accountItem?.access_token)!, "status" : statusText]
+        guard let accessToken = UserAccountViewModel.shareIntance.accountItem?.access_token else {
+            SVProgressHUD.showError(withStatus: "未登录!")
+            return
+        }
+        let parameters = ["access_token" : accessToken, "status" : statusText]
         
         // 3.发送网络请求
         request(methodType: .POST, urlString: urlString, parameters: parameters as [String : AnyObject]) { (result, error) -> () in
@@ -137,10 +143,14 @@ extension NetworkTool {
 extension NetworkTool {
     func sendStatus(statusText : String, image : UIImage, isSuccess : @escaping(Bool) -> ()) {
         // 1.获取请求的URLString
-        let urlString = "https://api.weibo.com/2/statuses/upload.json"
+        let urlString = "https://api.weibo.com/2/statuses/share.json"
         
         // 2.获取请求的参数
-        let parameters = ["access_token" : (UserAccountViewModel.shareIntance.accountItem?.access_token)!, "status" : statusText]
+        guard let accessToken = UserAccountViewModel.shareIntance.accountItem?.access_token else {
+            SVProgressHUD.showError(withStatus: "未登录!")
+            return
+        }
+        let parameters = ["access_token" : accessToken, "status" : statusText]
         
         // 3.发送网络请求
         post(urlString, parameters: parameters, constructingBodyWith: { (formData) -> Void in

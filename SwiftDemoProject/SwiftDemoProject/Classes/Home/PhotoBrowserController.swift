@@ -51,6 +51,7 @@ class PhotoBrowserController: UIViewController {
         // 2.滚动到对应的图片
         collectionView.scrollToItem(at: indexPath as IndexPath, at: .left, animated: false)
     }
+    
 }
 
 
@@ -89,6 +90,8 @@ extension PhotoBrowserController {
 // MARK:- 事件监听函数
 extension PhotoBrowserController {
     @objc fileprivate func closeBtnClick() {
+        SVProgressHUD.dismiss()
+        
         dismiss(animated: true, completion: nil)
     }
     

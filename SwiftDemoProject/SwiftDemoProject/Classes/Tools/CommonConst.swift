@@ -9,8 +9,8 @@
 import Foundation
 
 // MARK:- 授权的常量
-let app_key = "2566795959"
-let app_secret = "973ad1310960a76f4e45aa586eb59358"
+let app_key = "1707710744"
+let app_secret = "aab313a51508f8cc58053b6eb525a6b4"
 let redirect_uri = "https://www.baidu.com"
 
 // MARK:- 选择照片的通知常量

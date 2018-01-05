@@ -63,7 +63,7 @@ class HomeStatusViewCell: UITableViewCell {
             timeLabel.text = viewModel.createAtText
             
             // 7.设置微博正文
-            contentLabel.text = viewModel.status?.text
+            contentLabel.attributedText = EmoticonMatchTool.shareIntance.getAttrString(statusText: viewModel.status?.text, font: contentLabel.font)
             
             // 8.设置来源
             if let sourceText = viewModel.sourceText {
@@ -87,7 +87,9 @@ class HomeStatusViewCell: UITableViewCell {
             if viewModel.status?.retweeted_status != nil {
                 // 1.设置转发微博的正文
                 if let screenName = viewModel.status?.retweeted_status?.user?.screen_name, let retweetedText = viewModel.status?.retweeted_status?.text {
-                    retweetedContentLabel.text = "@" + "\(screenName): " + retweetedText
+                    
+                    let retweetedText = "@" + "\(screenName): " + retweetedText
+                    retweetedContentLabel.attributedText = EmoticonMatchTool.shareIntance.getAttrString(statusText: retweetedText, font: retweetedContentLabel.font)
                     
                     // 设置转发正文距离顶部的约束
                     retweetedContentLabelTopCons.constant = 15

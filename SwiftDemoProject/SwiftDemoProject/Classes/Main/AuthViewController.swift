@@ -67,7 +67,7 @@ extension AuthViewController {
     
     @objc fileprivate func fillItemClick() {
         // 1.书写js代码 : javascript / java --> 雷锋和雷峰塔
-        let jsCode = "document.getElementById('userId').value='xxx@qq.com';document.getElementById('passwd').value='xxx';"
+        let jsCode = "document.getElementById('userId').value='XXX';document.getElementById('passwd').value='XXX';"
         
         // 2.执行js代码
         webView.stringByEvaluatingJavaScript(from: jsCode)
@@ -125,7 +125,7 @@ extension AuthViewController : UIWebViewDelegate {
 
 // MARK:- 请求数据
 extension AuthViewController {
-    /// 请求AccessToken
+    /// 请求AccessToken, 获取后用AccessToken请求用户信息, AccessToken和用户信息保存到模型中
     fileprivate func loadAccessToken(code : String) {
         NetworkTool.shareInstance.loadAccessToken(code: code) { (result, error) -> () in
             

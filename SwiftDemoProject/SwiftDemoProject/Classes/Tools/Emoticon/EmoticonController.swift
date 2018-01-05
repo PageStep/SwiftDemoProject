@@ -49,7 +49,7 @@ extension EmoticonController {
         // 1.添加子控件
         view.addSubview(collectionView)
         view.addSubview(toolBar)
-        collectionView.backgroundColor = UIColor.purple
+        collectionView.backgroundColor = UIColor.gray
         toolBar.backgroundColor = UIColor.darkGray
         
         // 2.设置子控件的frame

@@ -16,7 +16,13 @@ class EmoticonMatchTool: NSObject {
     private lazy var manager : EmoticonManager = EmoticonManager()
     
     // 查找属性字符串的方法
-    func getAttrString(statusText : String, font : UIFont) -> NSMutableAttributedString? {
+    func getAttrString(statusText : String?, font : UIFont) -> NSMutableAttributedString? {
+        
+        // 0.如果statusText没有值,则直接返回nil
+        guard let statusText = statusText else {
+            return nil
+        }
+        
         // 1.创建匹配规则
         let pattern = "\\[.*?\\]" // 匹配表情
         
@@ -27,6 +33,10 @@ class EmoticonMatchTool: NSObject {
         
         // 3.开始匹配
         let results = regex.matches(in: statusText, options: [], range: NSRange(location: 0, length: statusText.characters.count))
+        
+        if results.count == 0 {
+            return NSMutableAttributedString(string: statusText)
+        }
         
         // 4.获取结果
         let attrMStr = NSMutableAttributedString(string: statusText)
