@@ -66,7 +66,7 @@ extension AuthViewController {
     }
     
     @objc fileprivate func fillItemClick() {
-        // 1.书写js代码 : javascript / java --> 雷锋和雷峰塔
+        // 1.书写js代码
         let jsCode = "document.getElementById('userId').value='XXX';document.getElementById('passwd').value='XXX';"
         
         // 2.执行js代码
