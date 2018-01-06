@@ -48,7 +48,7 @@
 - 3.实现tableView数据源方法和代理方法(返回cell的height)
 
 ### 3.自定义UITableViewCell, 展示微博
-- 1.新增viewModel属性, 在属性的监听方法(didSet)中:
+- 1.新增viewModel属性, 在属性的监听中(didSet):
   - 根据模型数据确定是否隐藏cell中的视图控件
   - 把数据赋值给cell中视图控件
   - 计算cell的height
