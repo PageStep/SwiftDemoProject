@@ -91,7 +91,7 @@
 - 4.实现collectionView的数据源方法, 展示表情图片
 - 5.实现collectionView的代理方法, 监听表情item的点击
   - 将点击的表情插入最近分组中
-  - 将点击的表情通过闭包(block)回调给发布微博控控制器, 把emoticon表情插入到textView中(需要做图文混排)
+  - 将点击的表情通过闭包(block)回调给发布微博控控制器(注意block和当前控制器的循环引用问题), 把emoticon表情插入到textView中(需要做图文混排)
 - 6.将微博正文和转发微博的label中的text转换为属性字符串, string -> NSMutableAttributedString
   - 从服务器请求到的的数据中, 文字内容是string, 不能直接显示表情
   - 需要将表情文字通过正则表达式匹配出来, 再将对应的表情图片插入到属性字符串中, 在label中显示
